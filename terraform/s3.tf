@@ -1,4 +1,4 @@
-# deprecated arguments exist in newer version. Hence, using website configuration resource will be better 
+# deprecated arguments exist in newer version. Hence, fixed by using website configuration resource 
 # resource "aws_s3_bucket" "chaecloudresume" {
 # 	bucket = "${var.bucket_name}"
 # 	acl = "${var.acl_value}"   
