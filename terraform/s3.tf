@@ -30,28 +30,28 @@
 
 
 
-	resource "aws_s3_bucket" "chaecloudresume" {
-	bucket = var.bucket_name
-	}
+resource "aws_s3_bucket" "chaecloudresume" {
+bucket = var.bucket_name
+}
 
-	resource "aws_s3_bucket_policy" "s3-policy" {
-	bucket = aws_s3_bucket.chaecloudresume.bucket
-	policy = templatefile("s3-policy.json", { bucket = var.bucket_name })
-	}
+resource "aws_s3_bucket_policy" "s3-policy" {
+bucket = aws_s3_bucket.chaecloudresume.bucket
+policy = templatefile("s3-policy.json", { bucket = var.bucket_name })
+}
 
-	resource "aws_s3_bucket_acl" "s3-acl" {
-	bucket = aws_s3_bucket.chaecloudresume.bucket
-	acl    = var.acl_value
-	}
+resource "aws_s3_bucket_acl" "s3-acl" {
+bucket = aws_s3_bucket.chaecloudresume.bucket
+acl    = var.acl_value
+}
 
-	resource "aws_s3_bucket_website_configuration" "chaecloudresume-config" {
-	bucket = aws_s3_bucket.chaecloudresume.bucket
-	index_document {
-    	suffix = "index.html"
-  	}
-	# TODO
-	# error_document {
-    # key = "error.html"
-  	# }
+resource "aws_s3_bucket_website_configuration" "chaecloudresume-config" {
+bucket = aws_s3_bucket.chaecloudresume.bucket
+index_document {
+suffix = "index.html"
+}
+# TODO
+# error_document {
+# key = "error.html"
+# }
 
-	}	
+}	
