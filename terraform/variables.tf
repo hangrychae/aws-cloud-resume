@@ -27,3 +27,4 @@ variable "common_tags" {
 # variable "security_key" {
 #   description = "security_key to access aws"
 # }
+# for security, advised not to store these two variables in tf
