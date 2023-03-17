@@ -12,13 +12,6 @@ resource "aws_apigatewayv2_api" "visit-count-api" {
 }
 
 
-# Permission from lambda (resource-based policy) 
-# resource "aws_lambda_permission" "api_lambda_permission" {
-# 	action        = "lambda:InvokeFunction"
-# 	function_name = aws_lambda_function.lambda_function.arn
-# 	principal     = "apigateway.amazonaws.com"
-# 	source_arn    = "${aws_apigatewayv2_api.visit-count-api.execution_arn}/*/*"
-# }
 
 # Integration
 resource "aws_apigatewayv2_integration" "visit-count-api" {
@@ -31,17 +24,6 @@ resource "aws_apigatewayv2_integration" "visit-count-api" {
   integration_uri           = aws_lambda_function.lambda_function.invoke_arn
 }
 
-
-
-# integrate get method route
-# resource "aws_apigatewayv2_integration" "read_integration_gateway" {
-#   api_id           = aws_apigatewayv2_api.visit-count-api.id
-#   integration_type = "AWS_PROXY"
-#   connection_type  = "INTERNET"
-#   integration_method = "GET"
-#   integration_uri    = aws_lambda_function.lambda_function.invoke_arn
-#   passthrough_behavior = "WHEN_NO_MATCH"
-# }
 
 # route for getting count
 resource "aws_apigatewayv2_route" "getCount" {
